@@ -9,10 +9,11 @@ Each language has its own real linter with type/scope-aware rules that no generi
 - [PHPStan (PHP)](phpstan.md)
 - [golangci-lint (Go)](golangci-lint.md)
 - [Clippy (Rust)](clippy.md)
+- [RuboCop (Ruby)](rubocop.md)
 
 ## Dispatch
 
-1. **Detect language(s) present.** Look for `package.json` (+ `tsconfig.json`/`.tsx`/`.jsx` files → JS/TS), `composer.json` (→ PHP), `go.mod` (→ Go), `Cargo.toml` (→ Rust). A project can have more than one — run each language's linter independently, don't merge configs.
+1. **Detect language(s) present.** Look for `package.json` (+ `tsconfig.json`/`.tsx`/`.jsx` files → JS/TS), `composer.json` (→ PHP), `go.mod` (→ Go), `Cargo.toml` (→ Rust), `Gemfile`/`*.gemspec` (→ Ruby). A project can have more than one — run each language's linter independently, don't merge configs.
 2. **Detect existing config.** Each per-language file lists the config file(s) to look for. If found, use it as-is — do not overwrite a user's existing lint config without asking.
 3. **Detect the binary.** Each per-language file lists how to check for and install the tool. If missing, tell the user what's missing and the exact install command — do not silently skip or silently install without confirmation for anything that isn't project-local (e.g. a global Go/Rust toolchain install).
 4. **No config found:** offer to scaffold one (see each file's "Scaffold a config" section) rather than running with bare defaults, since bare defaults tend to be noisy or too permissive.
