@@ -52,7 +52,7 @@ Write numbers as plain digits — `42`, `12.5`, `-3`. **`$5`, `1,000`, `5%`, `00
 
 ## Formatting
 
-`format` merges a style into a range: `font {bold, italic, underline, color}`, `fill {color}`, `alignment {horizontal: left|center|right, wrapText}`, `border {style, color}`, `numberFormat`. Colors are `#RRGGBB`; `null` removes a property. Number formats that render: `0`, `0.00`, `#,##0`, `#,##0.00`, `"$"#,##0.00`, `0%`, `0.0%` (and other symbol prefixes); suffix text, scientific and date formats do **not**. Details in the reference file.
+`format` merges a style into a range: `font {bold, italic, underline, size, color}` (`size` in points, e.g. `14`; the default is 11 — a larger size automatically grows the rows it touches), `fill {color}`, `alignment {horizontal: left|center|right, wrapText}`, `border {style, color}`, `numberFormat`. Colors are `#RRGGBB`; `null` removes a property. Number formats that render: `0`, `0.00`, `#,##0`, `#,##0.00`, `"$"#,##0.00`, `0%`, `0.0%` (and other symbol prefixes); suffix text, scientific and date formats do **not**. Details in the reference file.
 
 ## Examples
 

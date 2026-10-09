@@ -61,13 +61,13 @@ Results of decimal arithmetic keep their digits (`0.50`, `10.00`); wrap in `ROUN
 
 `style` merges into the cell's existing style; `null` removes a property; the same style is reused across cells, so formatting a big range is cheap.
 
-- `font`: `bold`, `italic`, `underline` (booleans), `color` (`#RRGGBB`)
+- `font`: `bold`, `italic`, `underline` (booleans), `size` (points, a number such as `14` or `10.5`; default 11), `color` (`#RRGGBB`)
 - `fill`: `color`
 - `alignment`: `horizontal` (`left` | `center` | `right`), `wrapText` (boolean)
 - `border`: `{style, color}` for all four edges, or per edge `{top|right|bottom|left: {style, color}}`; `style` is `none | thin | medium | thick | dashed | dotted | double`
 - `numberFormat`: see below
 
-Imported Excel files may also carry font name/size and vertical alignment; those are preserved but not shown.
+A larger `size` grows each row it touches to fit (about 1.3 × the size in points — 24 pt text gives a 31.5 pt row) and the new height is saved in the file, so printing and Excel export match; lowering or clearing the size shrinks the row again, unless the user set that row taller by hand. Imported Excel files may also carry a font name and vertical alignment; those are preserved but not shown.
 
 ### Number formats that render
 
