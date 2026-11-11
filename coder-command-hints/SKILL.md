@@ -113,6 +113,14 @@ Root flags `--format string  Output format: table|json|compact`, `--path string`
 
 `--dry-run` is a switch (no `args`); `--format` takes a value (has `args`); `--severity` is shared by every subcommand, so it is persistent at the top, not repeated.
 
+## Very large CLIs (aws, gcloud, az, and similar)
+
+Coder bundles only the top level of the AWS, Google Cloud and Azure CLIs (the service/group names), so deeper hints for them need a user spec. These tools have hundreds of services and thousands of commands, so do not try to cover everything:
+
+- Ask the user which services or command groups they actually use (for example `aws s3`, `aws ec2`, `gcloud compute`) and generate only those.
+- The user's file **replaces** the built-in spec for that command. Include the top-level service/group names the user may want to type (from `<command> help`) as plain `subcommands` entries with a description, and fill in depth only for the groups they use. Anything omitted will no longer be suggested.
+- Get the real lists from the tool: `aws help`, `aws <service> help`, `gcloud <group> --help`, `az <group> -h`. Never write them from memory.
+
 ## If hints don't appear
 
 Wrong file name (must match the typed command, case-sensitive), invalid JSON (run the validator), the terminal is not zsh/bash, or Command hints is switched off in Settings → General → Terminal. Existing terminals opened before Coder was updated may need to be reopened once.
